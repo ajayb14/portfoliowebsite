@@ -1,9 +1,9 @@
 import React from 'react'
-import Navbar from '../components/navbar';
+import Navbar from '../components/Navbar/navbar';
 
 const Portfolio = () => {
   return (
-    <div className="h-screen bg-gradient-to-r from-sky-300 to-yellow-100">
+    <div className="h-screen bg-gradient-custom">
       <header>
         <Navbar />
       </header>

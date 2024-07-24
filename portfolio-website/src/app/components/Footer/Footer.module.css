@@ -1,0 +1,17 @@
+.icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: border 0.3s ease;
+    background-color: transparent; 
+  }
+  
+  .icon:hover {
+    border: 2px solid transparent; 
+    background-image: radial-gradient(circle, transparent 50%, transparent 51%, rgba(0, 0, 0, 0.1) 51%, rgba(0, 0, 0, 0.1) 100%);
+    border-image: conic-gradient(from 0deg, #36BA98, #E9B824, #DD5746, #E76F51, #36BA98) 1;
+  }
+  

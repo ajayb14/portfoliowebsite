@@ -9,12 +9,18 @@ const config: Config = {
   theme: {
     extend: {
       backgroundImage: {
+        "gradient-custom":
+          "linear-gradient(to right, #36BA98, #E9B824, #DD5746, #E76F51)",
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      },
+      fontFamily: {
+        georgia: ['Georgia', 'serif'],
       },
     },
   },
   plugins: [],
 };
+
 export default config;

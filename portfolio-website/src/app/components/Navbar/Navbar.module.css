@@ -1,0 +1,26 @@
+.buttonHover {
+  position: relative;
+  overflow: hidden;
+}
+
+.buttonHover::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  background: linear-gradient(to right, #36BA98, #E9B824, #DD5746, #E76F51);
+  width: 0;
+  transition: width 0.3s ease, opacity 0.3s ease;
+}
+
+.buttonHover:hover::after {
+  width: 100%;
+  animation: expandLine 0.3s forwards;
+}
+
+.buttonHover:not(:hover)::after {
+  animation: shrinkLine 0.3s forwards;
+}
+
+  
