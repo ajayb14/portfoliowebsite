@@ -5,16 +5,16 @@ import styles from './Footer.module.css';
 
 const Footer = () => {
   return (
-    <footer className="bg-white bg-opacity-50 shadow-md py-6">
+    <footer className="bg-white shadow-md pt-10 md:pt-0">
       <div className="container mx-auto text-center flex flex-col items-center">
         {/* Logo */}
         <Link href="/">
           <Image
-            src="/Ajay logo.svg" 
+            src="/Ajay-logo.png" 
             alt="Ajay's Logo"
-            className="h-auto md:w-64 md:h-24 pr-28"
-            width={250}
-            height={40}
+            className="md:w-32 md:h-32"
+            width={70}
+            height={70}
           />
         </Link>
         

@@ -12,16 +12,16 @@ const Navbar = () => {
   };
 
   return (
-    <div className="relative h-20 py-5 px-10 fixed top-0 left-0 w-full z-50 bg-white bg-opacity-50 shadow-md flex items-center justify-between">
+    <div className="relative h-20 py-5 px-10 fixed top-0 left-0 w-full z-50 bg-white shadow-md flex items-center justify-between">
       <div className="flex items-center">
         {/* Logo */}
         <Link href="/">
           <Image
             src="/Ajay logo.svg" 
             alt="Ajay's Logo"
-            width={250} 
-            height={40} 
-            className="h-auto md:w-64 md:h-24" 
+            className="h-auto w-32 md:w-64 md:h-64 mb-2"
+            width={70}
+            height={70}
           />
         </Link>
       </div>
@@ -46,28 +46,28 @@ const Navbar = () => {
       </button>
       {/* Dropdown Menu */}
       <div
-        className={`md:hidden absolute right-0 top-20 w-full bg-gradient-custom shadow-md ${isMenuOpen ? 'block' : 'hidden'}`}
+        className={`md:hidden absolute right-0 top-full mt-2 w-48 bg-white bg-opacity-50 shadow-md transition-all duration-300 ease-in-out transform ${isMenuOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'}`}
         aria-hidden={!isMenuOpen}
       >
         <nav>
           <ul className="flex flex-col items-center py-2">
-            <li>
+            <li className="w-full text-center">
               <Link href="/Portfolio">
-                <button className={`${styles.buttonHover} text-lg text-gray-700 hover:text-gray-900 bg-transparent px-3 py-1 rounded font-georgia`}>
+                <button className={`${styles.buttonHover} text-lg text-gray-700 bg-transparent px-3 py-1 rounded font-georgia w-full`}>
                   Portfolio
                 </button>
               </Link>
             </li>
-            <li>
+            <li className="w-full text-center">
               <Link href="/About">
-                <button className={`${styles.buttonHover} text-lg text-gray-700 hover:text-gray-900 bg-transparent px-3 py-1 rounded font-georgia`}>
+                <button className={`${styles.buttonHover} text-lg text-gray-700bg-transparent px-3 py-1 rounded font-georgia w-full`}>
                   About
                 </button>
               </Link>
             </li>
-            <li>
+            <li className="w-full text-center">
               <Link href="/">
-                <button className={`${styles.buttonHover} text-lg text-gray-700 hover:text-gray-900 bg-transparent px-3 py-1 rounded font-georgia`}>
+                <button className={`${styles.buttonHover} text-lg text-gray-700 bg-transparent px-3 py-1 rounded font-georgia w-full`}>
                   Home
                 </button>
               </Link>

@@ -23,4 +23,16 @@
   animation: shrinkLine 0.3s forwards;
 }
 
+.dropdownMenu {
+  transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+}
+
+.dropdownMenuOpen {
+  max-height: 500px; 
+  opacity: 1;
+}
+
   
