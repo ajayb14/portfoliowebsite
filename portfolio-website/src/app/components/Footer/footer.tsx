@@ -10,7 +10,7 @@ const Footer = () => {
         {/* Logo */}
         <Link href="/">
           <Image
-            src="/Ajay-logo.png" 
+            src="/ajay-logo.png" 
             alt="Ajay's Logo"
             className="md:w-32 md:h-32"
             width={70}
