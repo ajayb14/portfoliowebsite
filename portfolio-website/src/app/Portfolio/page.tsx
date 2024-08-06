@@ -22,7 +22,7 @@ const projects = [
   {
     title: 'Meta Coursera Webpage',
     image: '/Ajay restaurant website.svg',
-    github: 'https://github.com/ajayb14/Coursera-Webpage-1',
+    github: 'https://github.com/ajayb14/CourseraFrontEndWebsite',
   },
 ];
 
