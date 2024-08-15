@@ -2,14 +2,14 @@ import React from 'react';
 import Image from 'next/image';
 import { FaGithub } from 'react-icons/fa';
 
-// Define the interface
+//interface
 interface Project {
   title: string;
   image: string;
   github: string;
 }
 
-// Define the props type for the component
+//props type for the component
 interface ProjectCardProps {
   project: Project;
 }
