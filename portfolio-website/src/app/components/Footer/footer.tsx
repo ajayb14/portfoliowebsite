@@ -26,7 +26,7 @@ const Footer = () => {
         {/* Social Icons */}
         <div className="flex space-x-6 mb-4">
           {/* LinkedIn */}
-          <Link href="https://www.linkedin.com/in/ajay-bharanidhar-905816321/" target="_blank" aria-label="LinkedIn">
+          <Link href="https://www.linkedin.com/in/ajaybharanidhar" target="_blank" aria-label="LinkedIn">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
