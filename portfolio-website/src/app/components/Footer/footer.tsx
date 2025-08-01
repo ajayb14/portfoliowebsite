@@ -10,17 +10,17 @@ const Footer = () => {
         {/* Logo */}
         <Link href="/">
           <Image
-            src="/ajay-logo.png" 
+            src="/ajay-logo.png"
             alt="Ajay's Logo"
             className="md:w-32 md:h-32"
             width={70}
             height={70}
           />
         </Link>
-        
+
         {/* Text */}
         <p className="mt-4 mb-8 text-lg">
-          © 2024 Ajay Bharanidhar. All rights reserved.
+          © 2025 Ajay Bharanidhar. All rights reserved.
         </p>
 
         {/* Social Icons */}

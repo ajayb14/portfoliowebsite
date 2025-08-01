@@ -12,7 +12,7 @@ export default function About() {
         <main className="flex flex-col items-center text-center flex-grow mt-40">
           <h1 className="text-2xl md:text-4xl font-bold mb-4">Hi, I'm Ajay</h1>
           <p className="text-base md:text-lg mb-8 max-w-xl">
-            I started my journey as a frontend developer 1 year ago. I've done many different small projects such as this one. Each project has taught me valuable lessons in responsive design, user experience, and problem-solving.
+            I started my journey as a developer 1 year ago. I've done many different small projects such as this one. Each project has taught me valuable lessons in responsive design, user experience, and problem-solving.
           </p>
           <div className="bg-white bg-opacity-50 rounded-lg shadow-md p-20 mb-8 max-w-md w-full">
             <div className="flex flex-col items-center">
@@ -34,21 +34,20 @@ export default function About() {
                 <ul className="list-inside mb-4">
                   <li>JavaScript</li>
                   <li>TypeScript</li>
-                  <li>HTML</li>
-                  <li>CSS</li>
+                  <li>HTML/CSS</li>
                   <li>Java</li>
                   <li>C++</li>
                   <li>Python</li>
-                  <li>Git</li>
                 </ul>
-                <h3 className="text-lg font-semibold mb-2">Dev Tools:</h3>
+                <h3 className="text-lg font-semibold mb-2">Dev Tools and Frameworks/Libraries:</h3>
                 <ul className="list-inside">
                   <li>Visual Studio Code</li>
-                  <li>GitHub</li>
+                  <li>Git</li>
                   <li>Figma</li>
                   <li>React</li>
                   <li>Next.js</li>
                   <li>Tailwind</li>
+                  <li>Bootstrap</li>
                 </ul>
               </div>
             </div>
