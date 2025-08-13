@@ -38,8 +38,8 @@ const Portfolio = () => {
           My Recent Work
         </h2>
 
-        {/* Project Cards */}
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
+        {/* Project Cards - 2 column layout */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 mb-12 max-w-6xl w-full justify-items-center">
           {projects.map((project, index) => (
             <ProjectCard key={index} project={project} />
           ))}

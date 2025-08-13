@@ -11,13 +11,17 @@ const Navbar = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
+
   return (
     <div className="relative h-20 py-5 px-10 fixed top-0 left-0 w-full z-50 bg-white shadow-md flex items-center justify-between">
       <div className="flex items-center">
         {/* Logo */}
         <Link href="/">
           <Image
-            src="/Ajay logo.svg" 
+            src="/Ajay logo.svg"
             alt="Ajay's Logo"
             className="h-auto w-32 md:w-64 md:h-64 mb-2"
             width={70}
@@ -27,9 +31,10 @@ const Navbar = () => {
       </div>
       {/* Menu Toggle Button for Mobile */}
       <button
-        className="block md:hidden text-gray-700"
+        className="block md:hidden text-gray-700 hover:text-gray-900 transition-colors duration-200 p-2 rounded-lg hover:bg-gray-100"
         onClick={toggleMenu}
         aria-label="Toggle menu"
+        aria-expanded={isMenuOpen}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -39,42 +44,48 @@ const Navbar = () => {
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
-          className="w-6 h-6"
+          className={`w-6 h-6 transition-transform duration-300 ${isMenuOpen ? 'rotate-90' : ''}`}
         >
-          <path d="M4 6h16M4 12h16M4 18h16" />
+          {isMenuOpen ? (
+            <path d="M18 6L6 18M6 6l12 12" />
+          ) : (
+            <path d="M4 6h16M4 12h16M4 18h16" />
+          )}
         </svg>
       </button>
       {/* Dropdown Menu */}
-      <div
-        className={`md:hidden absolute right-0 top-full mt-2 w-48 bg-white bg-opacity-50 shadow-md transition-all duration-300 ease-in-out transform ${isMenuOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'}`}
-        aria-hidden={!isMenuOpen}
-      >
-        <nav>
-          <ul className="flex flex-col items-center py-2">
-            <li className="w-full text-center">
-              <Link href="/Portfolio">
-                <button className={`${styles.buttonHover} text-lg text-gray-700 bg-transparent px-3 py-1 rounded font-georgia w-full`}>
-                  Portfolio
-                </button>
-              </Link>
-            </li>
-            <li className="w-full text-center">
-              <Link href="/About">
-                <button className={`${styles.buttonHover} text-lg text-gray-700bg-transparent px-3 py-1 rounded font-georgia w-full`}>
-                  About
-                </button>
-              </Link>
-            </li>
-            <li className="w-full text-center">
-              <Link href="/">
-                <button className={`${styles.buttonHover} text-lg text-gray-700 bg-transparent px-3 py-1 rounded font-georgia w-full`}>
-                  Home
-                </button>
-              </Link>
-            </li>
-          </ul>
-        </nav>
-      </div>
+      {isMenuOpen && (
+        <div
+          className="md:hidden absolute right-0 top-full mt-2 w-56 bg-white/95 backdrop-blur-sm shadow-xl rounded-lg border border-gray-200 transition-all duration-300 ease-in-out transform origin-top"
+          aria-hidden={!isMenuOpen}
+        >
+          <nav>
+            <ul className="flex flex-col py-3">
+              <li className="w-full">
+                <Link href="/Portfolio" onClick={closeMenu}>
+                  <button className="text-base sm:text-lg text-gray-700 hover:text-gray-900 bg-transparent px-4 py-3 rounded-lg font-georgia w-full text-left transition-all duration-200 hover:bg-gray-50 focus:bg-gray-50 focus:outline-none">
+                    Portfolio
+                  </button>
+                </Link>
+              </li>
+              <li className="w-full">
+                <Link href="/About" onClick={closeMenu}>
+                  <button className="text-base sm:text-lg text-gray-700 hover:text-gray-900 bg-transparent px-4 py-3 rounded-lg font-georgia w-full text-left transition-all duration-200 hover:bg-gray-50 focus:bg-gray-50 focus:outline-none">
+                    About
+                  </button>
+                </Link>
+              </li>
+              <li className="w-full">
+                <Link href="/" onClick={closeMenu}>
+                  <button className="text-base sm:text-lg text-gray-700 hover:text-gray-900 bg-transparent px-4 py-3 rounded-lg font-georgia w-full text-left transition-all duration-200 hover:bg-gray-50 focus:bg-gray-50 focus:outline-none">
+                    Home
+                  </button>
+                </Link>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      )}
       {/* Navigation Links for Desktop */}
       <nav className="hidden md:flex md:items-center md:justify-end">
         <ul className="flex space-x-4">
