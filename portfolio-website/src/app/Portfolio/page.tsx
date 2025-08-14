@@ -1,4 +1,5 @@
-import React from 'react';
+'use client';
+import React, { useEffect, useRef } from 'react';
 import Navbar from '../components/Navbar/navbar';
 import Footer from '../components/Footer/footer';
 import ProjectCard from '../components/ProjectCard/projectcard';
@@ -27,6 +28,28 @@ const projects = [
 ];
 
 const Portfolio = () => {
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+
+    // Only observe elements that exist
+    cardRefs.current.forEach((el) => {
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <div className="flex flex-col min-h-screen bg-gradient-custom">
       <header>
@@ -38,10 +61,19 @@ const Portfolio = () => {
           My Recent Work
         </h2>
 
-        {/* Project Cards - 2 column layout */}
+        {/* Project Cards - 2 column layout with scroll reveal */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 mb-12 max-w-6xl w-full justify-items-center">
           {projects.map((project, index) => (
-            <ProjectCard key={index} project={project} />
+            <div
+              key={index}
+              ref={(el) => {
+                cardRefs.current[index] = el;
+              }}
+              className="reveal w-full flex justify-center"
+              style={{ animationDelay: `${index * 120}ms` }}
+            >
+              <ProjectCard project={project} />
+            </div>
           ))}
         </div>
       </main>

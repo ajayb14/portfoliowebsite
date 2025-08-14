@@ -23,9 +23,11 @@ const Navbar = () => {
           <Image
             src="/Ajay logo.svg"
             alt="Ajay's Logo"
-            className="h-auto w-32 md:w-64 md:h-64 mb-2"
-            width={70}
-            height={70}
+            width={200}
+            height={200}
+            className="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 lg:w-36 lg:h-36 transition-all duration-300 hover:scale-105"
+            priority
+            quality={100}
           />
         </Link>
       </div>
