@@ -2,5 +2,192 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Global styles for better mobile experience */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+  
+  /* Prevent horizontal scroll on mobile */
+  * {
+    box-sizing: border-box;
+  }
+  
+  /* Better touch targets for mobile */
+  button, a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Improve image rendering */
+  img {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+}
+
+@layer components {
+  /* Custom scrollbar */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 3px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+  }
+  
+  /* Glass morphism effect */
+  .glass {
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+  }
+  
+  /* Smooth transitions */
+  .transition-smooth {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+@layer utilities {
+  /* Text shadow utilities */
+  .text-shadow {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .text-shadow-lg {
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Focus utilities for accessibility */
+  .focus-ring {
+    @apply focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2;
+  }
+}
+
+/* Entrance Animations */
+@keyframes slideInFromTop {
+  0% {
+    transform: translateY(-100vh);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInFromBottom {
+  0% {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Stroke tracing animation: draw forward (slower), then return while filling */
+@keyframes nameTrace {
+  0% {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    fill-opacity: 0;
+  }
+  66.666% {
+    stroke-dashoffset: 0;
+    fill-opacity: 0;
+  }
+  100% {
+    stroke-dashoffset: 1000;
+    fill-opacity: 1;
+  }
+}
+
+/* Card fade-up + slight scale-in */
+@keyframes cardIn {
+  0% {
+    opacity: 0;
+    transform: translateY(24px) scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Animation Classes */
+.animate-slide-in-top {
+  animation: slideInFromTop 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.animate-slide-in-bottom {
+  animation: slideInFromBottom 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+/* SVG name tracing */
+.name-trace {
+  stroke: currentColor;
+  stroke-width: 2px;
+  fill: currentColor;
+  fill-opacity: 0;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: nameTrace 3.75s ease forwards;
+}
+
+/* Card animation utility */
+.animate-card-in {
+  animation: cardIn 700ms ease-out 150ms both;
+}
+
+/* Reveal-on-scroll utility */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px) scale(0.98);
+}
+.reveal.in-view {
+  animation: cardIn 700ms ease-out 100ms both;
+}
+
+/* Initial states for animations */
+.initial-hidden {
+  opacity: 0;
+  transform: translateY(-100vh);
+}
+
+.initial-hidden-bottom {
+  opacity: 0;
+  transform: translateY(100vh);
+}
+
+.initial-card-hidden {
+  opacity: 0;
+  transform: translateY(24px) scale(0.98);
+}
+
+.initial-text-hidden {
+  clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+}
+
 
 

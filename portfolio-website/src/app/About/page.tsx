@@ -1,8 +1,35 @@
-import React from 'react';
+'use client';
+import React, { useEffect, useRef, useState } from 'react';
 import Navbar from '../components/Navbar/navbar';
 import Footer from '../components/Footer/footer';
 
 export default function About() {
+  const [isLoaded, setIsLoaded] = useState(false);
+  const skillsRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    setIsLoaded(true);
+  }, []);
+
+  useEffect(() => {
+    const element = skillsRef.current;
+    if (!element) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <div>
       <div className="flex flex-col min-h-screen bg-gradient-custom">
@@ -12,15 +39,31 @@ export default function About() {
         <main className="flex flex-col items-center text-center flex-grow px-4 sm:px-6 lg:px-8 pt-20 sm:pt-24 lg:pt-32">
           <div className="max-w-4xl w-full space-y-8 sm:space-y-10 lg:space-y-12">
             {/* Hero Section */}
-            <div className="space-y-8 sm:space-y-10">
-              <div className="relative">
-                <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 font-georgia leading-tight">
-                  Hi, I'm Ajay
-                </h1>
+            <div className="space-y-8 sm:space-y-10 min-h-[85vh] flex flex-col justify-center">
+              <div className="relative flex justify-center">
+                {/* SVG stroke tracing heading */}
+                <svg
+                  className={`w-full max-w-[720px] h-12 sm:h-16 lg:h-20 ${isLoaded ? '' : 'opacity-0'}`}
+                  viewBox="0 0 1200 200"
+                  preserveAspectRatio="xMidYMid meet"
+                  role="img"
+                  aria-label="Hi, I'm Ajay"
+                >
+                  <text
+                    x="50%"
+                    y="60%"
+                    textAnchor="middle"
+                    dominantBaseline="middle"
+                    className="name-trace text-gray-900"
+                    style={{ fontFamily: 'Georgia, serif', fontSize: '80px' }}
+                  >
+                    Hi, I'm Ajay
+                  </text>
+                </svg>
               </div>
 
               {/* About Me Description Card */}
-              <div className="bg-white/95 backdrop-blur-sm rounded-2xl shadow-xl p-8 sm:p-10 lg:p-12 max-w-4xl mx-auto border border-white/20">
+              <div className={`bg-white/95 backdrop-blur-sm rounded-2xl shadow-xl p-8 sm:p-10 lg:p-12 max-w-4xl mx-auto border border-white/20 ${isLoaded ? 'animate-card-in' : 'initial-card-hidden'}`}>
                 <div className="relative">
                   {/* Decorative elements */}
                   <div className="absolute -top-3 -left-3 w-6 h-6 bg-blue-500 rounded-full opacity-20"></div>
@@ -33,8 +76,8 @@ export default function About() {
               </div>
             </div>
 
-            {/* Skills Section */}
-            <div className="bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl p-8 sm:p-10 lg:p-12 max-w-4xl mx-auto w-full">
+            {/* Skills Section - reveal on scroll */}
+            <div ref={skillsRef} className="reveal bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl p-8 sm:p-10 lg:p-12 max-w-4xl mx-auto w-full">
               <div className="flex flex-col items-center space-y-8 sm:space-y-10">
                 {/* Icon and Title */}
                 <div className="relative">
